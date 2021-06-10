@@ -1631,10 +1631,10 @@ contains
         file_name='INPUT/gfs_bndy.tile7.'//int_to_char//'_gsi.nc'          !<-- The DA-updated BC file.
       endif
 !
-      if (is_master()) then
+!jaa      if (is_master()) then
         write(*,22211)trim(file_name)
 22211   format(' regional_bc_data file_name=',a)
-      endif
+!jaa      endif
 !-----------------------------------------------------------------------
 !***  Open the regional BC file.
 !***  Find the # of layers (klev_in) in the BC input.
@@ -6698,6 +6698,7 @@ subroutine remap_scalar_nggps_regional_bc(Atm                         &
        if (mpp_pe() == 0) write(0,*) 'INPUT source not found ',lstatus,' set source=No Source Attribute'
        source='No Source Attribute'
       endif
+       source='FV3GFS GAUSSIAN NEMSIO FILE'
   end subroutine get_data_source
 
 !---------------------------------------------------------------------
